@@ -4,89 +4,84 @@ import TimeLineElement from "../components/cv/TimeLine.astro";
 ---
 
 <BaseLayout title="Resume" sideBarActiveItemID="cv">
+  <!-- PROFILE -->
   <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Profile</div>
+    <div class="text-3xl w-full font-bold">About me</div>
   </div>
-
   <div class="mb-10 text-justify">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-    aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
-    cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    AI and cybersecurity consultant with a passion for creating secure and user
+    focused digital products. I blend hands‑on software engineering, threat
+    mitigation know‑how and product leadership to help organisations turn
+    cutting‑edge research into reliable value driven solutions.
   </div>
 
+  <!-- INTERESTS -->
+  <div class="mb-5">
+    <div class="text-3xl w-full font-bold">Interests</div>
+  </div>
+  <ul class="list-disc mx-6 mb-10 grid gap-2">
+    <li>Generative AI and language model safety</li>
+    <li>Offensive and defensive security research</li>
+    <li>Tech entrepreneurship and the Swiss start‑up community</li>
+    <li>Open source tooling for data science and security</li>
+    <li>Mountain biking and alpine hiking</li>
+    <li>Specialty coffee and manual brewing methods</li>
+  </ul>
+
+  <!-- EDUCATION (no years) -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Education</div>
   </div>
-
   <div class="time-line-container grid gap-4 mb-10">
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
+      title="CAS Entrepreneurial Leadership in Technology Ventures"
+      subtitle="ETH Zürich, Zürich, Switzerland"
     />
     <TimeLineElement
-      title="Title Name"
-      subtitle="[start year] to [end year] at [Study Center Name], [City], [Country]"
+      title="Master of Engineering Entrepreneurial Cybersecurity"
+      subtitle="Saarland University, Saarbrücken, Germany"
+    />
+    <TimeLineElement
+      title="Bachelor of Science Cybersecurity"
+      subtitle="Saarland University, Saarbrücken, Germany"
     />
   </div>
 
+  <!-- EXPERIENCE (no years) -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Experience</div>
   </div>
-
   <div class="time-line-container mb-10">
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
+      title="AI and Cybersecurity Consultant"
+      subtitle="From 2024 at Eraneos Group"
+    />
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
+      title="AI and Strategy Consultant"
+      subtitle="From 2020 at FPV - Beratung & Training"
+    />
     <TimeLineElement
-      title="Job Title at Project or Company Name"
-      subtitle="From [Start Date] to [End Date] at [Company], [City], [Country]"
-    >
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
-    </TimeLineElement>
+      title="AI and Cybersecurity Consultant"
+      subtitle="From 2024 to 2024 PwC Switzerland AG"
+    />
+    <TimeLineElement
+      title="Full Stack Developer and Co-Founder"
+      subtitle="From 2022 to 2023 at Bitahoy GmbH"
+    />
+    <TimeLineElement
+      title="Research Project Lead"
+      subtitle="From 2020 to 2021 at CISPA Helmholtz Center for Information Security"
+    />
   </div>
 
+  <!-- CERTIFICATIONS -->
   <div class="mb-5">
     <div class="text-3xl w-full font-bold">Certifications</div>
   </div>
-
   <ul class="list-disc mx-6 mb-10 grid gap-2">
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-    <li>
-      <a href="#" target="_blank"> Certification Name (with link)</a>
-    </li>
-  </ul>
-
-  <div class="mb-5">
-    <div class="text-3xl w-full font-bold">Skills</div>
-  </div>
-
-  <ul class="list-disc md:columns-5 columns-2 mx-6">
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
-    <li>Skill Name</li>
+    <li>Professional Scrum Master I</li>
+    <li>Professional Scrum Product Owner I</li>
+    <li>ISC2 CC</li>
+    <li>Qualys Vulnerability Management Detection and Response</li>
   </ul>
 </BaseLayout>
