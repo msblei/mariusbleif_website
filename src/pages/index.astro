@@ -1,87 +1,194 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import HorizontalCard from "../components/HorizontalCard.astro";
-import { getCollection } from "astro:content";
-import createSlug from "../lib/createSlug";
+import { Image } from "astro:assets";
 
-const posts = (await getCollection("blog")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import workshop1 from "../images/marius_workshop_1.jpg";
+import workshop2 from "../images/marius_workshop_2.png";
+import workshopBw from "../images/marius_BW_DIY_WS.png";
+import portrait from "../images/portrait_bleif.png";
+import travel1 from "../images/marius_privat_1.JPEG";
+import travel2 from "../images/marius_privat_2.JPEG";
+import travel3 from "../images/marius_privat_3.png";
+import travel4 from "../images/marius_privat_4.JPG";
 
-const last_posts = posts.slice(0, 3);
+// Ordered to lead with trust (workshops in front of real audiences),
+// then humanise. `cls` controls the mosaic tile size. Portrait-orientation
+// photos go in tall slots and landscape photos in wide/square slots, so
+// object-cover never crops through a face. The spans pack into a full 4x4
+// block on desktop and an even 2-column block on mobile (no empty cells).
+const photos = [
+  { src: workshop1, alt: "Marius Bleif leading an AI workshop for a seminar audience", cls: "col-span-2 row-span-2", eager: true },
+  { src: portrait, alt: "Portrait of Marius Bleif", cls: "row-span-2" },
+  { src: travel2, alt: "Marius Bleif in front of a city skyline", cls: "row-span-2" },
+  { src: travel3, alt: "Marius Bleif on a river boat", cls: "row-span-2" },
+  { src: workshopBw, alt: "Marius Bleif explaining neural networks during a workshop", cls: "md:col-span-2" },
+  { src: workshop2, alt: "Marius Bleif presenting to a professional group", cls: "" },
+  { src: travel4, alt: "Marius Bleif hiking in the mountains", cls: "md:col-span-2" },
+  { src: travel1, alt: "Marius Bleif while travelling", cls: "" },
+];
 ---
 
-<BaseLayout sideBarActiveItemID="home">
-  <div class="pb-12 mt-5">
-    <div class="text-5xl font-bold">I'm Marius Bleif</div>
-    <div class="text-3xl py-3 font-bold">Software Engineer and Consultant</div>
-    <div class="py-2">
-      <text class="text-lg">
-        I'm Marius, an AI and cybersecurity consultant dedicated to developing
-        innovative, secure, and user-centered digital solutions. With experience
-        spanning across consulting, product development, and research, my work
-        integrates cutting-edge technology with practical business strategies.
-      </text>
-    </div>
-    <div class="mt-8">
-      <a class="btn" href="https://linkedin.com/in/msblei" target="_blank">
-        Let's connect!</a
-      >
-    </div>
+<BaseLayout image={portrait.src}>
+  <div id="sun-glow" class="sun-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+  <div class="relative z-10">
+  <header class="mb-10">
+    <h1 class="text-5xl md:text-6xl tracking-tight">Marius Bleif</h1>
+    <p class="text-2xl md:text-3xl mt-3 opacity-70">
+      Consultant, AI, Cybersecurity, Strategy
+    </p>
+  </header>
+
+  <div
+    class="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] sm:auto-rows-[11rem] md:auto-rows-[13rem] gap-3 [grid-auto-flow:dense]"
+  >
+    {
+      photos.map((p) => (
+        <figure
+          class={`group relative overflow-hidden rounded-lg ring-1 ring-white/5 ${p.cls}`}
+        >
+          <Image
+            src={p.src}
+            alt={p.alt}
+            width={1000}
+            loading={p.eager ? "eager" : "lazy"}
+            class="h-full w-full object-cover grayscale brightness-90 transition duration-700 ease-out group-hover:grayscale-0 group-hover:brightness-100 group-hover:scale-[1.04]"
+          />
+        </figure>
+      ))
+    }
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-2">My last projects {"</>"}</div>
+  <nav
+    class="mt-12 flex items-center justify-center gap-8 opacity-60 transition hover:opacity-100"
+    aria-label="Contact"
+  >
+    <a
+      href="mailto:marius.b.gm@gmail.com"
+      aria-label="Email"
+      title="Email"
+      class="transition hover:scale-110"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"></rect>
+        <path d="m2 7 10 6 10-6"></path>
+      </svg>
+    </a>
+    <a
+      href="https://www.linkedin.com/in/msblei"
+      target="_blank"
+      rel="noopener"
+      aria-label="LinkedIn"
+      title="LinkedIn"
+      class="transition hover:scale-110"
+    >
+      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" style="fill: currentColor;">
+        <circle cx="4.983" cy="5.009" r="2.188"></circle>
+        <path d="M9.237 8.855v12.139h3.769v-6.003c0-1.584.298-3.118 2.262-3.118 1.937 0 1.961 1.811 1.961 3.218v5.904H21v-6.657c0-3.27-.704-5.783-4.526-5.783-1.835 0-3.065 1.007-3.568 1.96h-.051v-1.66H9.237zm-6.142 0H6.87v12.139H3.095z"></path>
+      </svg>
+    </a>
+  </nav>
   </div>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Coming soon 🚧</div>
-  </div>
+  <style>
+    .sun-glow {
+      --sun-x: 50%;
+      --sun-y: 38%;
+      --sun-size: 18rem;
+      opacity: 0;
+      background: radial-gradient(
+        circle var(--sun-size) at var(--sun-x) var(--sun-y),
+        rgba(255, 184, 96, 0.28),
+        rgba(255, 140, 52, 0.1) 42%,
+        rgba(255, 120, 40, 0) 70%
+      );
+      will-change: opacity;
+    }
 
-  <!-- <HorizontalCard
-    title="Demo Project 1"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="NEW"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 2"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-  />
-  <div class="divider my-0"></div>
-  <HorizontalCard
-    title="Demo Project 3"
-    img="/post_img.webp"
-    desc="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-    url="#"
-    badge="FOSS"
-  /> -->
+    /* No motion / no JS: show a gentle static glow instead. */
+    @media (prefers-reduced-motion: reduce) {
+      .sun-glow {
+        opacity: 0.2;
+      }
+    }
+  </style>
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5 mt-10">Latest from my blog</div>
-  </div>
+  <script>
+    const glow = document.getElementById("sun-glow");
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-  <div>
-    <div class="text-3xl w-full font-bold mb-5">Coming soon 🚧</div>
-  </div>
+    if (glow && !reduce) {
+      let w = window.innerWidth;
+      let h = window.innerHeight;
+      let tx = w * 0.5; // target position
+      let ty = h * 0.38;
+      let cx = tx; // current (eased) position
+      let cy = ty;
+      let boost = 0; // temporary lift from cursor movement
+      let lastX = tx;
+      let lastY = ty;
+      let lastMove = -Infinity; // timestamp of last pointer move
+      let usingMouse = false; // once a real mouse moves, stop autonomous drift
+      const start = performance.now();
 
-  <!-- {
-    last_posts.map((post) => (
-      <>
-        <HorizontalCard
-          title={post.data.title}
-          img={post.data.heroImage}
-          desc={post.data.description}
-          url={"/blog/" + createSlug(post.data.title, post.slug)}
-          target="_self"
-          badge={post.data.badge}
-        />
-        <div class="divider my-0" />
-      </>
-    ))
---->
+      window.addEventListener("resize", () => {
+        w = window.innerWidth;
+        h = window.innerHeight;
+      });
+
+      window.addEventListener(
+        "pointermove",
+        (e) => {
+          tx = e.clientX;
+          ty = e.clientY;
+          const dx = e.clientX - lastX;
+          const dy = e.clientY - lastY;
+          lastX = e.clientX;
+          lastY = e.clientY;
+          lastMove = performance.now();
+          if (e.pointerType === "mouse") usingMouse = true;
+          boost = Math.min(1, boost + Math.min(0.35, Math.hypot(dx, dy) / 450));
+        },
+        { passive: true }
+      );
+
+      const frame = (now) => {
+        const elapsed = (now - start) / 1000;
+
+        // Slow "sunrise": ease brightness up to full over ~38s.
+        const rise = Math.min(1, elapsed / 38);
+        const eased = 1 - Math.pow(1 - rise, 2);
+
+        // Autonomous drift only on touch devices / before any mouse is used.
+        // With a mouse, the glow stays put when idle instead of wandering off.
+        const idle = now - lastMove > 2500;
+        if (idle && !usingMouse) {
+          tx = w * (0.5 + 0.28 * Math.sin(elapsed * 0.09));
+          ty = h * (0.42 + 0.16 * Math.sin(elapsed * 0.065 + 1.3));
+        }
+
+        // Lazily ease the visible glow toward the target.
+        cx += (tx - cx) * 0.03;
+        cy += (ty - cy) * 0.03;
+        boost *= 0.97; // decay the movement boost
+
+        // Gentle, slow pulsation (~11s period) so the sun softly throbs.
+        const pulse = Math.sin(elapsed * 0.55);
+        const intensity = Math.max(
+          0,
+          Math.min(1, eased * (0.6 + boost * 0.5) + 0.08 * pulse * eased)
+        );
+        const size = 14 + eased * 16 + boost * 6 + pulse * 0.9 * eased; // rem — grows as it rises and pulses
+
+        glow.style.setProperty("--sun-x", cx + "px");
+        glow.style.setProperty("--sun-y", cy + "px");
+        glow.style.setProperty("--sun-size", size + "rem");
+        glow.style.opacity = intensity.toFixed(3);
+
+        requestAnimationFrame(frame);
+      };
+
+      requestAnimationFrame(frame);
+    }
+  </script>
 </BaseLayout>
