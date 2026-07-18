@@ -7,7 +7,7 @@
 export const profile = {
   name: "Marius Bleif",
   jobTitle: "Consultant — AI, Cybersecurity & Strategy",
-  bio: "Marius Bleif is a consultant specialising in artificial intelligence, cybersecurity, and strategy, bringing a unique blend of technical skills and business understanding. He helps organisations adopt AI securely and turn emerging technology into practical strategy, and regularly delivers hands-on workshops for professional and public-sector audiences. His education spans CISPA, Saarland University, and ETH Zürich.",
+  bio: "Marius Bleif is a German consultant specialising in artificial intelligence, cybersecurity, and strategy, bringing a unique blend of technical skills and business understanding. He helps organisations adopt AI securely and turn emerging technology into practical strategy, and regularly delivers hands-on workshops for professional and public-sector audiences. His education spans CISPA, Saarland University, and ETH Zürich.",
   knowsAbout: [
     "Artificial Intelligence",
     "Cybersecurity",
@@ -15,6 +15,8 @@ export const profile = {
     "Technology Strategy",
     "Machine Learning",
     "AI Workshops & Training",
+    "Business strategy",
+    "Business development"
   ],
   knowsLanguage: ["German", "English", "French"],
   education: [
