@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
+import { profile } from "../data/profile";
 
 import workshop1 from "../images/marius_workshop_1.jpg";
 import workshop2 from "../images/marius_workshop_2.png";
@@ -26,10 +27,34 @@ const photos = [
   { src: travel4, alt: "Marius Bleif hiking in the mountains", cls: "md:col-span-2" },
   { src: travel1, alt: "Marius Bleif while travelling", cls: "" },
 ];
+
+// Machine-readable identity for search engines and AI agents. This is a
+// recognised metadata standard (not hidden/cloaked text): the same facts are
+// exposed to every user agent and mirror the visible/screen-reader content.
+// All fields come from the shared profile (src/data/profile.ts).
+const person = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: profile.name,
+  jobTitle: profile.jobTitle,
+  description: profile.bio,
+  url: new URL("/", Astro.url).href,
+  image: new URL(portrait.src, Astro.url).href,
+  email: `mailto:${profile.email}`,
+  knowsAbout: profile.knowsAbout,
+  knowsLanguage: profile.knowsLanguage,
+  alumniOf: profile.education.map((name) => ({
+    "@type": "EducationalOrganization",
+    name,
+  })),
+  sameAs: [profile.links.linkedin, profile.links.github],
+};
 ---
 
 <BaseLayout image={portrait.src}>
   <div id="sun-glow" class="sun-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+
+  <script type="application/ld+json" set:html={JSON.stringify(person)} />
 
   <div class="relative z-10">
   <header class="mb-10">
@@ -38,6 +63,18 @@ const photos = [
       Consultant, AI, Cybersecurity, Strategy
     </p>
   </header>
+
+  <!-- Visually hidden, but present for screen readers and crawlers/agents. -->
+  <section class="sr-only">
+    <h2>About {profile.name}</h2>
+    <p>{profile.bio}</p>
+    <p>
+      Contact:
+      <a href={`mailto:${profile.email}`}>{profile.email}</a> ·
+      <a href={profile.links.linkedin}>LinkedIn</a> ·
+      <a href={profile.links.github}>GitHub</a>
+    </p>
+  </section>
 
   <div
     class="grid grid-cols-2 md:grid-cols-4 auto-rows-[9rem] sm:auto-rows-[11rem] md:auto-rows-[13rem] gap-3 [grid-auto-flow:dense]"
