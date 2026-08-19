@@ -1,8 +1,8 @@
 {
-  "name": "astrofy",
-  "description": "Astrofy is a free and open-source template for your Personal Portfolio Website built with Astro and TailwindCSS. Create in minutes a website with Blog, CV, Project Section, Store and RSS Feed.",
+  "name": "mariusbleif-website",
+  "description": "Personal website of Marius Bleif — mariusbleif.com",
   "type": "module",
-  "version": "3.0.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "dev": "astro dev",
@@ -13,12 +13,10 @@
   },
   "dependencies": {
     "@astrojs/mdx": "^4.2.5",
-    "@astrojs/rss": "^4.0.11",
     "@astrojs/sitemap": "3.3.1",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.7.5",
     "daisyui": "^4.4.10",
-    "dayjs": "^1.11.9",
     "sharp": "^0.32.6",
     "tailwindcss": "^3.3.5"
   },
