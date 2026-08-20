@@ -1,8 +1,8 @@
 # mariusbleif.com
 
-Source for my personal website, [mariusbleif.com](https://mariusbleif.com) — a single-page profile built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com) and [DaisyUI](https://daisyui.com).
+Source for my personal website, [mariusbleif.com](https://mariusbleif.com), a single-page profile built with [Astro](https://astro.build), [Tailwind CSS](https://tailwindcss.com) and [DaisyUI](https://daisyui.com).
 
-It started as a fork of the [Astrofy](https://github.com/manuelernestog/astrofy) portfolio template, but has been heavily edited since — the layout, content, styling and structure are largely rewritten, so don't expect it to match upstream.
+It started as a fork of the [Astrofy](https://github.com/manuelernestog/astrofy) portfolio template, but has been heavily edited since, the layout, content, styling and structure are largely rewritten, so don't expect it to match upstream.
 
 ## Development
 
