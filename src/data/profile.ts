@@ -30,4 +30,14 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/msblei",
     github: "https://github.com/msblei",
   },
+  // Shown under "building" at the bottom of the home page, newest first.
+  // `icon` is a file in public/ (square, ideally the project's own tile).
+  projects: [
+    {
+      name: "kladdle",
+      url: "https://kladdle.com",
+      tagline: "Steady wins for a busy life. Tasks, habits, objectives.",
+      icon: "/kladdle-icon.svg",
+    },
+  ],
 };
