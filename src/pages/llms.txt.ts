@@ -24,7 +24,7 @@ ${list(profile.education)}
 
 ## Projects
 
-${profile.projects.map((p) => `- ${p.name}: ${p.url} — ${p.tagline}`).join("\n")}
+${profile.projects.map((p) => `- ${p.name}: ${p.url} (${p.tagline})`).join("\n")}
 
 ## Links
 
