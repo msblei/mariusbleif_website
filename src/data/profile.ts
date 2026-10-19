@@ -25,7 +25,7 @@ export const profile = {
     "Saarland University",
     "ETH Zürich",
   ],
-  email: "marius.b.gm@gmail.com",
+  email: "hello@mariusbleif.com",
   links: {
     linkedin: "https://www.linkedin.com/in/msblei",
     github: "https://github.com/msblei",
@@ -33,6 +33,12 @@ export const profile = {
   // Shown under "building" at the bottom of the home page, newest first.
   // `icon` is a file in public/ (square, ideally the project's own tile).
   projects: [
+    {
+      name: "Food Autonomy Atlas",
+      url: "https://food-autonomy-atlas.com",
+      tagline: "How long would the food produced in a country last its people?",
+      icon: "/food-autonomy-atlas-icon.svg",
+    },
     {
       name: "kladdle",
       url: "https://kladdle.com",
