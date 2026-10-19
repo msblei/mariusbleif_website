@@ -30,20 +30,21 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/msblei",
     github: "https://github.com/msblei",
   },
-  // Shown under "building" at the bottom of the home page, newest first.
+  // Shown under "building" at the bottom of the home page, in this order
+  // from top to bottom.
   // `icon` is a file in public/ (square, ideally the project's own tile).
   projects: [
-    {
-      name: "Food Autonomy Atlas",
-      url: "https://food-autonomy-atlas.com",
-      tagline: "How long would the food produced in a country last its people?",
-      icon: "/food-autonomy-atlas-icon.svg",
-    },
     {
       name: "kladdle",
       url: "https://kladdle.com",
       tagline: "Steady wins for a busy life. Tasks, habits, objectives.",
       icon: "/kladdle-icon.svg",
+    },
+    {
+      name: "Food Autonomy Atlas",
+      url: "https://food-autonomy-atlas.com",
+      tagline: "How long would the food produced in a country last its people?",
+      icon: "/food-autonomy-atlas-icon.svg",
     },
   ],
 };
