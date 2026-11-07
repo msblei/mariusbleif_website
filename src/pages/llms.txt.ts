@@ -26,6 +26,10 @@ ${list(profile.education)}
 
 ${profile.projects.map((p) => `- ${p.name}: ${p.url} (${p.tagline})`).join("\n")}
 
+## Teaching
+
+${profile.teaching.map((p) => `- ${p.name}: ${p.url} (${p.tagline})`).join("\n")}
+
 ## Links
 
 - LinkedIn: ${profile.links.linkedin}

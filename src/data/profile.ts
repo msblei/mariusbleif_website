@@ -1,6 +1,6 @@
 // Single source of truth for machine-readable identity.
 // Consumed by:
-//   - src/pages/index.astro  -> JSON-LD Person + screen-reader bio
+//   - src/pages/index.astro  -> JSON-LD Person + screen-reader bio + link lists
 //   - src/pages/llms.txt.ts   -> generated /llms.txt
 // Edit here; both stay in sync.
 
@@ -45,6 +45,22 @@ export const profile = {
       url: "https://food-autonomy-atlas.com",
       tagline: "How long would the food produced in a country last its people?",
       icon: "/food-autonomy-atlas-icon.svg",
+    },
+  ],
+  // Shown under "teaching", below "building", same shape and rules.
+  // These live in the separate teaching site (teaching.mariusbleif.com).
+  teaching: [
+    {
+      name: "From LLM to Agent",
+      url: "https://teaching.mariusbleif.com/llm-to-agent",
+      tagline: "Model, tools, instructions: build your own agent in 20 minutes.",
+      icon: "/llm-to-agent-icon.svg",
+    },
+    {
+      name: "AI Coding Workshop",
+      url: "https://teaching.mariusbleif.com/ai-coding-workshop",
+      tagline: "Build an app with an AI coding assistant: vibe first, then with a plan.",
+      icon: "/ai-coding-workshop-icon.svg",
     },
   ],
 };
