@@ -47,20 +47,13 @@ export const profile = {
       icon: "/food-autonomy-atlas-icon.svg",
     },
   ],
-  // Shown under "teaching", below "building", same shape and rules.
-  // These live in the separate teaching site (teaching.mariusbleif.com).
+  // Shown under "teaching", below "building". One link to the separate teaching
+  // site, which lists the individual workshops itself.
   teaching: [
     {
-      name: "From LLM to Agent",
-      url: "https://teaching.mariusbleif.com/llm-to-agent",
-      tagline: "Model, tools, instructions: build your own agent in 20 minutes.",
-      icon: "/llm-to-agent-icon.svg",
-    },
-    {
-      name: "AI Coding Workshop",
-      url: "https://teaching.mariusbleif.com/ai-coding-workshop",
-      tagline: "Build an app with an AI coding assistant: vibe first, then with a plan.",
-      icon: "/ai-coding-workshop-icon.svg",
+      name: "teaching.mariusbleif.com",
+      url: "https://teaching.mariusbleif.com",
+      tagline: "Workshop tools, including From LLM to Agent and the AI Coding Workshop.",
     },
   ],
 };

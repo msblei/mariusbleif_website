@@ -1,10 +1,10 @@
 ---
 // Icon + name link list used by the "building" and "teaching" sections of
-// the home page. Icons are each entry's own square tile, used unaltered.
+// the home page. Icons are optional: each entry's own square tile, used unaltered.
 interface Props {
   id: string;
   heading: string;
-  items: { name: string; url: string; icon: string }[];
+  items: { name: string; url: string; icon?: string }[];
 }
 const { id, heading, items } = Astro.props;
 ---
@@ -21,7 +21,7 @@ const { id, heading, items } = Astro.props;
             rel="noopener"
             class="inline-flex items-center gap-3 opacity-70 transition hover:opacity-100"
           >
-            <img src={p.icon} alt="" width="36" height="36" class="shrink-0" />
+            {p.icon && <img src={p.icon} alt="" width="36" height="36" class="shrink-0" />}
             <span class="text-xl">{p.name}</span>
           </a>
         </li>
