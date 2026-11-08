@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import { Image } from "astro:assets";
 import { profile } from "../data/profile";
 import LinkList from "../components/LinkList.astro";
+import SunGlow from "../components/SunGlow.astro";
 
 import workshop1 from "../images/marius_workshop_1.jpg";
 import workshop2 from "../images/marius_workshop_2.png";
@@ -53,7 +54,7 @@ const person = {
 ---
 
 <BaseLayout image={portrait.src}>
-  <div id="sun-glow" class="sun-glow pointer-events-none fixed inset-0 z-0" aria-hidden="true"></div>
+  <SunGlow />
 
   <script type="application/ld+json" set:html={JSON.stringify(person)} />
 
@@ -100,106 +101,4 @@ const person = {
   <LinkList id="building" heading="building" items={profile.projects} />
   <LinkList id="teaching" heading="teaching" items={profile.teaching} />
   </div>
-
-  <style>
-    .sun-glow {
-      --sun-x: 50%;
-      --sun-y: 38%;
-      --sun-size: 18rem;
-      opacity: 0;
-      background: radial-gradient(
-        circle var(--sun-size) at var(--sun-x) var(--sun-y),
-        rgba(255, 184, 96, 0.28),
-        rgba(255, 140, 52, 0.1) 42%,
-        rgba(255, 120, 40, 0) 70%
-      );
-      will-change: opacity;
-    }
-
-    /* No motion / no JS: show a gentle static glow instead. */
-    @media (prefers-reduced-motion: reduce) {
-      .sun-glow {
-        opacity: 0.2;
-      }
-    }
-  </style>
-
-  <script>
-    const glow = document.getElementById("sun-glow");
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-    if (glow && !reduce) {
-      let w = window.innerWidth;
-      let h = window.innerHeight;
-      let tx = w * 0.5; // target position
-      let ty = h * 0.38;
-      let cx = tx; // current (eased) position
-      let cy = ty;
-      let boost = 0; // temporary lift from cursor movement
-      let lastX = tx;
-      let lastY = ty;
-      let lastMove = -Infinity; // timestamp of last pointer move
-      let usingMouse = false; // once a real mouse moves, stop autonomous drift
-      const start = performance.now();
-
-      window.addEventListener("resize", () => {
-        w = window.innerWidth;
-        h = window.innerHeight;
-      });
-
-      window.addEventListener(
-        "pointermove",
-        (e) => {
-          tx = e.clientX;
-          ty = e.clientY;
-          const dx = e.clientX - lastX;
-          const dy = e.clientY - lastY;
-          lastX = e.clientX;
-          lastY = e.clientY;
-          lastMove = performance.now();
-          if (e.pointerType === "mouse") usingMouse = true;
-          boost = Math.min(1, boost + Math.min(0.35, Math.hypot(dx, dy) / 450));
-        },
-        { passive: true }
-      );
-
-      const frame = (now) => {
-        const elapsed = (now - start) / 1000;
-
-        // Slow "sunrise": ease brightness up to full over ~38s.
-        const rise = Math.min(1, elapsed / 38);
-        const eased = 1 - Math.pow(1 - rise, 2);
-
-        // Autonomous drift only on touch devices / before any mouse is used.
-        // With a mouse, the glow stays put when idle instead of wandering off.
-        const idle = now - lastMove > 2500;
-        if (idle && !usingMouse) {
-          tx = w * (0.5 + 0.28 * Math.sin(elapsed * 0.09));
-          ty = h * (0.42 + 0.16 * Math.sin(elapsed * 0.065 + 1.3));
-        }
-
-        // Lazily ease the visible glow toward the target.
-        cx += (tx - cx) * 0.03;
-        cy += (ty - cy) * 0.03;
-        boost *= 0.97; // decay the movement boost
-
-        // Gentle, slow pulsation (~11s period) so the sun softly throbs.
-        const pulse = Math.sin(elapsed * 0.55);
-        const intensity = Math.max(
-          0,
-          Math.min(1, eased * (0.6 + boost * 0.5) + 0.08 * pulse * eased)
-        );
-        const size = 14 + eased * 16 + boost * 6 + pulse * 0.9 * eased; // rem — grows as it rises and pulses
-
-        glow.style.setProperty("--sun-x", cx + "px");
-        glow.style.setProperty("--sun-y", cy + "px");
-        glow.style.setProperty("--sun-size", size + "rem");
-        glow.style.opacity = intensity.toFixed(3);
-
-        requestAnimationFrame(frame);
-      };
-
-      requestAnimationFrame(frame);
-    }
-  </script>
 </BaseLayout>
